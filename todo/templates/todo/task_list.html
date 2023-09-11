@@ -1,4 +1,17 @@
+{% if request.user.is_authenticated %}
+    <p>{{ request.user}}</p>
+    <a href="{% url 'logout' %}">logout</a>
+{%else%}
+    <a href="{% url 'login' %}">login</a>
+{% endif %}
+    <hr>
+
 <h1>todo list</h1>
+
+<form action="" method='get'>
+    <input type="text" name='search-area'>
+    <input type="submit" value='search task'>
+</form>
 
 <table>
     <tr>
@@ -14,6 +27,6 @@
     </tr>
     {% empty %}
     <h3> No itens in list</h3>
-    <a href="">Add new item</a>
+    <a href="{% url 'task-create' %}">Add new item</a>
     {% endfor %}
 </table>
