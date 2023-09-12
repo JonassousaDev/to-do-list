@@ -1,8 +1,31 @@
-<h1>Register</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="register">
+{% extends 'todo/main.html' %}
 
-    <p>have an account alredy<a href="{%url 'login'%}">Login Now</a></p>
-</form>
+{% block content %}
+<Div class = 'container'>
+    <div class= 'header-bar'><h1>Register</h1></div>
+    <div class='card-body'>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label>{{ form.username.label }}</label>
+            {{ form.username }}
+        
+            <label>{{ form.password1.label }}</label>
+            {{ form.password1 }}
+        
+            <label>{{ form.password2.label }}</label>
+            {{ form.password2 }}
+            <br><br>
+            {% comment %} {{ form.as_p }} {% endcomment %}
+            <input class='button' type="submit" value="register">
+            <small><p>have an account alredy? <a href="{% url 'register' %}">Login Now</a></p></small>
+        </form>
+    </div>
+</Div>
+{% endblock content %}
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+

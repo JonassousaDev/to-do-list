@@ -1,8 +1,21 @@
-<h1>task form</h1>
+<div class='container'>
+    <div class='header-bar'>
+        <div>
+            <h1>task form</h1>
+            <a href="{% url 'task' %}">&#8592;back</a>
+        </div>
+    </div>
 
-<form action="" method='post'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Save task">
-</form>
-<a href="{% url 'task' %}">Go back</a>
+    <div class='card-body'>
+        <form action="" method='post'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class='button' type="submit" value="Save task">
+        </form>
+    </div>
+</div>
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
